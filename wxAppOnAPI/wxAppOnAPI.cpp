@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "wxAppOnAPI.h"
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
@@ -19,11 +18,11 @@ public:
 	wxFrame *CreateFrame();
 };
 
-class MyChild: public wxFrame
+class BasicFrame: public wxFrame
 {
 public:
-	MyChild(wxFrame *frame, const wxString& title, const wxPoint& pos, const wxSize& size, const long style);
-	virtual ~MyChild();
+	BasicFrame(wxFrame *frame, const wxString& title, const wxPoint& pos, const wxSize& size, const long style);
+	virtual ~BasicFrame();
 	DECLARE_EVENT_TABLE()
 };
 
@@ -47,22 +46,22 @@ void MyApp::ExitMainLoop()
 
 wxFrame *MyApp::CreateFrame()
 {
-	MyChild *subframe = new MyChild(NULL, wxT("Canvas Frame"), wxPoint(10, 10), wxSize(300, 300),
+	BasicFrame *subframe = new BasicFrame(NULL, wxT("Canvas Frame"), wxPoint(10, 10), wxSize(300, 300),
 		wxDEFAULT_FRAME_STYLE);
 	subframe->SetTitle(wxT("wxWidgets canvas frame"));
  	subframe->Show(true);
 	return subframe;
 }
 
-BEGIN_EVENT_TABLE(MyChild, wxFrame)
+BEGIN_EVENT_TABLE(BasicFrame, wxFrame)
 END_EVENT_TABLE()
 
-MyChild::MyChild(wxFrame *frame, const wxString& title, const wxPoint& pos, const wxSize& size, const long style)
+BasicFrame::BasicFrame(wxFrame *frame, const wxString& title, const wxPoint& pos, const wxSize& size, const long style)
 : wxFrame(frame, -1, title, pos, size, style)
 {
 }
 
-MyChild::~MyChild()
+BasicFrame::~BasicFrame()
 {
 	if ( IsLastBeforeExit() )
 		PostQuitMessage(0);
@@ -193,6 +192,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
+		break;
+	case WM_KEYDOWN:
+		if (VK_ESCAPE == wParam)
+			DestroyWindow(hWnd);
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
