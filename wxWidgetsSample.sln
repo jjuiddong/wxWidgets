@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wxAppOnAPI", "wxAppOnAPI\wxAppOnAPI.vcxproj", "{0B65B16B-B3AB-4E9E-B25D-1FEB62DD6A28}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreeCtrl", "TreeCtrl\TreeCtrl.vcxproj", "{6D2C7078-EA28-4BF4-BFAD-485976D81987}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DockingPane", "DockingPane\DockingPane.vcxproj", "{B7A42F16-B6F7-4168-84CD-714F7D006F3D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PropertyTest", "PropertyTest\PropertyTest.vcxproj", "{8EE1A791-656B-475C-9848-04B615E4EE87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B65B16B-B3AB-4E9E-B25D-1FEB62DD6A28}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0B65B16B-B3AB-4E9E-B25D-1FEB62DD6A28}.Debug|Win32.Build.0 = Debug|Win32
+		{0B65B16B-B3AB-4E9E-B25D-1FEB62DD6A28}.Release|Win32.ActiveCfg = Release|Win32
+		{0B65B16B-B3AB-4E9E-B25D-1FEB62DD6A28}.Release|Win32.Build.0 = Release|Win32
+		{6D2C7078-EA28-4BF4-BFAD-485976D81987}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6D2C7078-EA28-4BF4-BFAD-485976D81987}.Debug|Win32.Build.0 = Debug|Win32
+		{6D2C7078-EA28-4BF4-BFAD-485976D81987}.Release|Win32.ActiveCfg = Release|Win32
+		{6D2C7078-EA28-4BF4-BFAD-485976D81987}.Release|Win32.Build.0 = Release|Win32
+		{B7A42F16-B6F7-4168-84CD-714F7D006F3D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7A42F16-B6F7-4168-84CD-714F7D006F3D}.Debug|Win32.Build.0 = Debug|Win32
+		{B7A42F16-B6F7-4168-84CD-714F7D006F3D}.Release|Win32.ActiveCfg = Release|Win32
+		{B7A42F16-B6F7-4168-84CD-714F7D006F3D}.Release|Win32.Build.0 = Release|Win32
+		{8EE1A791-656B-475C-9848-04B615E4EE87}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8EE1A791-656B-475C-9848-04B615E4EE87}.Debug|Win32.Build.0 = Debug|Win32
+		{8EE1A791-656B-475C-9848-04B615E4EE87}.Release|Win32.ActiveCfg = Release|Win32
+		{8EE1A791-656B-475C-9848-04B615E4EE87}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

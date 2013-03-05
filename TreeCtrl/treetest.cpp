@@ -1,5 +1,4 @@
 
-
 #include "wx/wxprec.h"
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
@@ -85,7 +84,7 @@ void BasicFrame::CreateControls()
 	wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxVERTICAL);
 	itemPanel2->SetSizer(itemBoxSizer3);
 
-	wxTreeCtrl* itemTreeCtrl4 = new wxTreeCtrl( itemPanel2, ID_TREECTRL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_LINES_AT_ROOT|wxTR_ROW_LINES|wxTR_SINGLE );
+	wxTreeCtrl* itemTreeCtrl4 = new wxTreeCtrl( itemPanel2, ID_TREECTRL, wxDefaultPosition, wxSize(200, 400), wxTR_HAS_BUTTONS |wxTR_LINES_AT_ROOT|wxTR_ROW_LINES|wxTR_SINGLE );
 	itemBoxSizer3->Add(itemTreeCtrl4, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
 
 	wxTreeItemId rootId = itemTreeCtrl4->AddRoot(wxT("Root"));
@@ -96,6 +95,7 @@ void BasicFrame::CreateControls()
 	wxTreeItemId parentId = itemTreeCtrl4->AppendItem( rootId, "test5" );
 	itemTreeCtrl4->AppendItem( parentId, "test6" );
 	itemTreeCtrl4->Expand(rootId);
+	itemTreeCtrl4->Expand(parentId);
 
 	////@end BasicFrame content construction
 	//itemTreeCtrl4->Refresh();
