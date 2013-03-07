@@ -97,6 +97,12 @@ void BasicFrame::CreateControls()
 	itemTreeCtrl4->Expand(rootId);
 	itemTreeCtrl4->Expand(parentId);
 
+
+	wxToolBar *toolBar = CreateToolBar();
+	wxBitmap toolBarBitmaps[1];
+	toolBarBitmaps[0] = wxBITMAP(copy);
+	toolBar->AddTool(wxID_NEW, wxT("New"), toolBarBitmaps[0]);
+
 	////@end BasicFrame content construction
 	//itemTreeCtrl4->Refresh();
 // 	wxSize size = GetClientSize();
