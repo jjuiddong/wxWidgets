@@ -9,66 +9,66 @@
 #include "wx/wx.h"
 #endif
 #include "wx/evtloop.h"
+#include <wx/aui/aui.h>
 
-class MyApp: public wxApp
+
+class MyFrame : public wxFrame 
 {
 public:
-	virtual bool OnInit();
-	virtual void ExitMainLoop();
-	wxFrame *CreateFrame();
+	MyFrame(wxWindow* parent) : wxFrame(parent, -1, _("wxAUI Test"),
+		wxDefaultPosition, wxSize(800,600),
+		wxDEFAULT_FRAME_STYLE)
+	{
+		// notify wxAUI which frame to use
+		m_mgr.SetManagedWindow(this);
+
+		// create several text controls
+		wxTextCtrl* text1 = new wxTextCtrl(this, -1, _("Pane 1 - sample text"),
+			wxDefaultPosition, wxSize(200,150),
+			wxNO_BORDER | wxTE_MULTILINE);
+
+		wxTextCtrl* text2 = new wxTextCtrl(this, -1, _("Pane 2 - sample text"),
+			wxDefaultPosition, wxSize(200,150),
+			wxNO_BORDER | wxTE_MULTILINE);
+
+		wxTextCtrl* text3 = new wxTextCtrl(this, -1, _("Main content window"),
+			wxDefaultPosition, wxSize(200,150),
+			wxNO_BORDER | wxTE_MULTILINE);
+
+		// add the panes to the manager
+		m_mgr.AddPane(text1, wxLEFT, wxT("Pane Number One"));
+		m_mgr.AddPane(text2, wxBOTTOM, wxT("Pane Number Two"));
+		m_mgr.AddPane(text3, wxCENTER);
+
+		// tell the manager to "commit" all the changes just made
+		m_mgr.Update();
+	}
+
+	~MyFrame()
+	{
+		// deinitialize the frame manager
+		m_mgr.UnInit();
+	}
+
+private:
+	wxAuiManager m_mgr;
 };
 
-class BasicFrame: public wxFrame
-{
+// our normal wxApp-derived class, as usual
+class MyApp : public wxApp {
 public:
-	BasicFrame(wxFrame *frame, const wxString& title, const wxPoint& pos, const wxSize& size, const long style);
-	virtual ~BasicFrame();
-	DECLARE_EVENT_TABLE()
+
+	bool OnInit()
+	{
+		wxFrame* frame = new MyFrame(NULL);
+		SetTopWindow(frame);
+		frame->Show();
+		return true;                    
+	}
 };
 
 DECLARE_APP(MyApp)
 IMPLEMENT_APP_NO_MAIN(MyApp)
-
-bool MyApp::OnInit()
-{
-	if ( !wxApp::OnInit() )
-		return false;
-	SetExitOnFrameDelete(true);
-	CreateFrame();
-	return true;
-}
-
-void MyApp::ExitMainLoop()
-{
-	// instead of existing wxWidgets main loop, terminate the MFC one
-	::PostQuitMessage(0);
-}
-
-wxFrame *MyApp::CreateFrame()
-{
-	BasicFrame *subframe = new BasicFrame(NULL, wxT("Canvas Frame"), wxPoint(10, 10), wxSize(300, 300),
-		wxDEFAULT_FRAME_STYLE);
-	subframe->SetTitle(wxT("wxWidgets canvas frame"));
- 	subframe->Show(true);
-	return subframe;
-}
-
-BEGIN_EVENT_TABLE(BasicFrame, wxFrame)
-END_EVENT_TABLE()
-
-BasicFrame::BasicFrame(wxFrame *frame, const wxString& title, const wxPoint& pos, const wxSize& size, const long style)
-: wxFrame(frame, -1, title, pos, size, style)
-{
-}
-
-BasicFrame::~BasicFrame()
-{
-	if ( IsLastBeforeExit() )
-		PostQuitMessage(0);
-}
-
-/////////////////////////////////////////////////////////////////////
-
 
 
 #define MAX_LOADSTRING 100
@@ -116,6 +116,14 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+
+		wxEventLoop * const
+			evtLoop = static_cast<wxEventLoop *>(wxEventLoop::GetActive());
+		if ( evtLoop && evtLoop->PreProcessMessage(&msg) )
+			break;
+
+		if (wxTheApp) 
+			wxTheApp->ProcessIdle(); // 이 함수를 호출해야 Docking이 작동한다.
 	}
 
 	if ( wxTheApp )

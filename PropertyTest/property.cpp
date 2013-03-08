@@ -1,5 +1,5 @@
 // source
-// http://wiki.wxwidgets.org/WxAUI
+// wxWidgets sample ÀÇ propgrid ÂüÁ¶
 // 
 
 #include "wx/wxprec.h"
