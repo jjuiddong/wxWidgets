@@ -67,8 +67,8 @@ public:
 	}
 };
 
-DECLARE_APP(MyApp)
-IMPLEMENT_APP_NO_MAIN(MyApp)
+//DECLARE_APP(MyApp)
+//IMPLEMENT_APP_NO_MAIN(MyApp)
 
 
 #define MAX_LOADSTRING 100
@@ -122,13 +122,13 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		if ( evtLoop && evtLoop->PreProcessMessage(&msg) )
 			break;
 
-		if (wxTheApp) 
-			wxTheApp->ProcessIdle(); // 이 함수를 호출해야 Docking이 작동한다.
+		//if (wxTheApp) 
+		//	wxTheApp->ProcessIdle(); // 이 함수를 호출해야 Docking이 작동한다.
 	}
 
-	if ( wxTheApp )
-		wxTheApp->OnExit();
-	wxEntryCleanup();
+	//if ( wxTheApp )
+	//	wxTheApp->OnExit();
+	//wxEntryCleanup();
 
 	return (int) msg.wParam;
 }
@@ -165,14 +165,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
-   WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
-   wxSetInstance(hInstance);
-   wxApp::m_nCmdShow = nCmdShow;
-   int argc = 0;
-   wxChar **argv = NULL;
-   wxEntryStart(argc, argv);
-   if ( !wxTheApp || !wxTheApp->CallOnInit() )
-	   return FALSE;
+   //WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
+   //wxSetInstance(hInstance);
+   //wxApp::m_nCmdShow = nCmdShow;
+   //int argc = 0;
+   //wxChar **argv = NULL;
+   //wxEntryStart(argc, argv);
+   //if ( !wxTheApp || !wxTheApp->CallOnInit() )
+	  // return FALSE;
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd); 
